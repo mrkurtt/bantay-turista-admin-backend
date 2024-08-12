@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const logsModel = mongoose.Schema(
+const logModel = mongoose.Schema(
 	{
 		tourist_id: {
 			type: mongoose.Schema.Types.ObjectId,
@@ -17,3 +17,6 @@ const logsModel = mongoose.Schema(
 		timestamp: true,
 	}
 );
+
+const Log = mongoose.model('Log', logModel);
+module.exports = Log;
