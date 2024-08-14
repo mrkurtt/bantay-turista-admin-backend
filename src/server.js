@@ -12,7 +12,7 @@ const authRoutes = require('./api/routes/auth.route');
 const adminRoutes = require('./api/routes/admin.route');
 const establishmentRoutes = require('./api/routes/establishment.route');
 const logRoutes = require('./api/routes/log.route');
-const touristRoutes = require('./api/routes/log.route');
+const touristRoutes = require('./api/routes/tourist.route');
 
 // connect to database
 connectToDb();
