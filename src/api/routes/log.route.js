@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const logController = require('../controllers/log.controller');
+const {
+	getAllLogs,
+	getLog,
+	createLog,
+	updateLog,
+	deleteLog,
+} = require('../controllers/log.controller');
 
-router.get('/', logController.getAllLogs);
-router.get('/:id', logController.getLog);
-router.post('/', logController.createLog);
-router.put('/:id', logController.updateLog);
-router.delete('/:id', logController.deleteLog);
+router.get('/', getAllLogs);
+router.get('/:id', getLog);
+router.post('/', createLog);
+router.put('/:id', updateLog);
+router.delete('/:id', deleteLog);
 
 module.exports = router;

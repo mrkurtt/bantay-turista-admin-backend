@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/auth.controller');
+const { signUp, login } = require('../controllers/auth.controller');
 
 router.get('/', async (req, res) => {
 	res.json({
@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 	});
 });
 
-router.post('/signup', authController.signUp);
-router.post('/login', authController.login);
+router.post('/signup', signUp);
+router.post('/login', login);
 
 module.exports = router;

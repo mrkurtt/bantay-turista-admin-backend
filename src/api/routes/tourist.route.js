@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const touristController = require('../controllers/tourist.controller');
+const {
+	getAllTourists,
+	getTourist,
+	createTourist,
+	updateTourist,
+	deleteTourist,
+} = require('../controllers/tourist.controller');
 
-router.get('/', touristController.getAllTourists);
-router.get('/:id', touristController.getTourist);
-router.post('/', touristController.createTourist);
-router.put('/:id', touristController.updateTourist);
-router.delete('/:id', touristController.deleteTourist);
+router.get('/', getAllTourists);
+router.get('/:id', getTourist);
+router.post('/', createTourist);
+router.put('/:id', updateTourist);
+router.delete('/:id', deleteTourist);
 
 module.exports = router;
