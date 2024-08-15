@@ -37,6 +37,19 @@ const createEstablishment = async (req, res) => {
 	}
 };
 
+const getAllEstablishments = async (req, res) => {
+	try {
+		const establishments = await Establishment.find();
+
+		res.status(200).json({
+			success: true,
+			establishments,
+		});
+	} catch (error) {
+		res.status(400).json({ success: false, error: error.message });
+	}
+};
+
 const getEstablishment = async (req, res) => {
 	const { id } = req.params;
 
@@ -128,6 +141,7 @@ const deleteEstablishment = async (req, res) => {
 
 module.exports = {
 	createEstablishment,
+	getAllEstablishments,
 	getEstablishment,
 	updateEstablishment,
 	deleteEstablishment,

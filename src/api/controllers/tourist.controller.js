@@ -46,6 +46,19 @@ const createTourist = async (req, res) => {
 	}
 };
 
+const getAllTourists = async (req, res) => {
+	try {
+		const tourists = await Tourist.find();
+
+		res.status(200).json({
+			success: true,
+			tourists,
+		});
+	} catch (error) {
+		res.status(400).json({ success: false, error: error.message });
+	}
+};
+
 const getTourist = async (req, res) => {
 	const { id } = req.params;
 
@@ -139,4 +152,10 @@ const deleteTourist = async (req, res) => {
 	}
 };
 
-module.exports = { createTourist, getTourist, updateTourist, deleteTourist };
+module.exports = {
+	createTourist,
+	getAllTourists,
+	getTourist,
+	updateTourist,
+	deleteTourist,
+};
