@@ -13,6 +13,8 @@ const adminRoutes = require('./api/routes/admin.route');
 const establishmentRoutes = require('./api/routes/establishment.route');
 const logRoutes = require('./api/routes/log.route');
 const touristRoutes = require('./api/routes/tourist.route');
+const complaintRoutes = require('./api/routes/complaint.route');
+const spotRoutes = require('./api/routes/spot.route');
 
 // connect to database
 connectToDb();
@@ -27,6 +29,8 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/establishment', establishmentRoutes);
 app.use('/api/log', logRoutes);
 app.use('/api/tourist', touristRoutes);
+app.use('/api/complaint', complaintRoutes);
+app.use('/api/spot', spotRoutes);
 
 // start server
 app.listen(process.env.PORT, () => {
