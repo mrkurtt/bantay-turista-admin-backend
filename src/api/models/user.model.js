@@ -10,6 +10,11 @@ const userModel = mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		role: {
+			type: String,
+			enum: ['tourist', 'establishment', 'admin'],
+			required: true,
+		},
 	},
 	{
 		timestamp: true,

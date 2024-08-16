@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 
 const signUp = async (req, res) => {
-	const { username, password } = req.body;
+	const { username, password, role } = req.body;
 
 	try {
 		// check if the user is already exists
@@ -20,6 +20,7 @@ const signUp = async (req, res) => {
 		const newUser = new User({
 			username,
 			password: hashedPassword,
+			role,
 		});
 
 		await newUser.save();
@@ -28,6 +29,7 @@ const signUp = async (req, res) => {
 			success: true,
 			message: 'User signed up successfully',
 			userId: newUser._id,
+			role: newUser.role,
 		});
 	} catch (error) {}
 };
@@ -55,7 +57,7 @@ const login = async (req, res) => {
 
 		// sign and create JWT
 		const token = jwt.sign(
-			{ userId: user._id, username: user.username },
+			{ userId: user._id, username: user.username, role: user.role },
 			process.env.JWT_SECRET,
 			{
 				expiresIn: '12h',
