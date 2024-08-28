@@ -14,7 +14,7 @@ const logModel = mongoose.Schema(
 		},
 	},
 	{
-		timestamp: true,
+		timestamps: true,
 	}
 );
 

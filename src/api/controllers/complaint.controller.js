@@ -1,11 +1,15 @@
 const Complaint = require('../models/complaint.model');
+const Tourist = require('../models/tourist.model');
 
 const createComplaint = async (req, res) => {
-	const { tourist_id, description, resolved } = req.body;
+	const { id } = req.params;
+	const { description, resolved } = req.body;
 
 	try {
+		const tourist = await Tourist.findOne({ user_id: id });
+
 		const newComplaint = new Complaint({
-			tourist_id,
+			tourist_id: tourist._id,
 			description,
 			resolved,
 		});

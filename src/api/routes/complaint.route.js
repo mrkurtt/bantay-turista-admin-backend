@@ -10,7 +10,7 @@ const {
 
 router.get('/', getAllComplaints);
 router.get('/:id', getComplaint);
-router.post('/', createComplaint);
+router.post('/:id', createComplaint);
 router.put('/:id', updateComplaint);
 router.delete('/:id', deleteComplaint);
 

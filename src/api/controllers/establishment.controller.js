@@ -54,7 +54,7 @@ const getEstablishment = async (req, res) => {
 	const { id } = req.params;
 
 	try {
-		const establishment = await Establishment.findById(id);
+		const establishment = await Establishment.findOne({ user_id: id });
 
 		if (!establishment) {
 			return res
@@ -86,8 +86,8 @@ const updateEstablishment = async (req, res) => {
 	} = req.body;
 
 	try {
-		const updatedEstablishment = await Establishment.findByIdAndUpdate(
-			id,
+		const updatedEstablishment = await Establishment.findOneAndUpdate(
+			{ user_id: id },
 			{
 				establishment_name,
 				establishment_type,
@@ -99,7 +99,7 @@ const updateEstablishment = async (req, res) => {
 				photo_url,
 				user_id,
 			},
-			{ new: true } // Return the updated document
+			{ new: true }
 		);
 
 		if (!updatedEstablishment) {

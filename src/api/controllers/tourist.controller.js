@@ -63,7 +63,7 @@ const getTourist = async (req, res) => {
 	const { id } = req.params;
 
 	try {
-		const tourist = await Tourist.findById(id);
+		const tourist = await Tourist.findOne({ user_id: id });
 
 		if (!tourist) {
 			return res
@@ -97,8 +97,8 @@ const updateTourist = async (req, res) => {
 	} = req.body;
 
 	try {
-		const updatedTourist = await Tourist.findByIdAndUpdate(
-			id,
+		const updatedTourist = await Tourist.findOneAndUpdate(
+			{ user_id: id },
 			{
 				first_name,
 				last_name,
